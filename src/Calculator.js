@@ -25,14 +25,14 @@ class Calculator extends Component {
   expectedValue() {
     const { expected_upside, upside_probability, expected_downside, downside_probability } = this.state;
 
-    const expected_upside_value = parseInt(expected_upside, 10);
+    const expected_upside_value = parseInt(expected_upside, 10).toFixed(2);
     const upside_probability_value = parseInt(upside_probability, 10)/100;
-    const expected_downside_value = parseInt(expected_downside, 10);
+    const expected_downside_value = parseInt(expected_downside, 10).toFixed(2);
     const downside_probability_value = parseInt(downside_probability, 10)/100;
 
-    const expectedValueSum = ( expected_upside_value * upside_probability_value ) - ( expected_downside_value * downside_probability_value );
-    const expectedUpsideSum = ( expected_upside_value * upside_probability_value );
-    const expectedDownsideSum = ( expected_downside_value * downside_probability_value );
+    const expectedValueSum = (( expected_upside_value * upside_probability_value ) - ( expected_downside_value * downside_probability_value )).toFixed(2);
+    const expectedUpsideSum = (( expected_upside_value * upside_probability_value )).toFixed(2);
+    const expectedDownsideSum = (( expected_downside_value * downside_probability_value )).toFixed(2);
     const error = "You need to fill out all the fields";
 
     if (expected_upside && upside_probability && expected_downside && downside_probability) {
