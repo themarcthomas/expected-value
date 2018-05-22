@@ -11,6 +11,7 @@ class App extends Component {
         <div className="row">
           <div className="col-12">
             <h1>Expected Value</h1>
+            <p className="lead">Put in expected outcomes and values of both up and down sides. Then press calculate. If your expected value is negative, you'll know your choice is mostly downside.</p>
           </div>
         </div>
         <Calculator />
