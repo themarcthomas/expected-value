@@ -33,12 +33,22 @@ class Calculator extends Component {
     const expectedValueSum = ( expected_upside_value * upside_probability_value ) - ( expected_downside_value * downside_probability_value );
     const expectedUpsideSum = ( expected_upside_value * upside_probability_value );
     const expectedDownsideSum = ( expected_downside_value * downside_probability_value );
+    const error = "You need to fill out all the fields";
 
-    this.setState({
-      expectedValueSum,
-      expectedUpsideSum,
-      expectedDownsideSum,
-    })
+    if (expected_upside && upside_probability && expected_downside && downside_probability) {
+      this.setState({
+        expectedUpsideSum,
+        expectedDownsideSum,
+        expectedValueSum,
+        error : ""
+      })
+    } else {
+      this.setState({
+        error,
+      })
+    }
+
+
 
   }
 
@@ -53,7 +63,7 @@ class Calculator extends Component {
   }
 
   render() {
-    const { expectedValueSum, expectedUpsideSum, expectedDownsideSum } = this.state;
+    const { expectedValueSum, expectedUpsideSum, expectedDownsideSum, error } = this.state;
     return(
       <React.Fragment>
       <div className="row">
@@ -96,6 +106,7 @@ class Calculator extends Component {
           {expectedUpsideSum ? <p>Your expected <strong>upside</strong> value is £{expectedUpsideSum}</p> : null}
           {expectedDownsideSum ? <p>Your expected <strong>downside</strong> value is £{expectedDownsideSum}</p> : null}
           {expectedValueSum ? <p>Therefore your expected value is <strong>£{expectedValueSum}</strong></p> : null}
+          {error ? <strong>{error}</strong> : null}
         </div>
       </div>
       </React.Fragment>
