@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import Input from './Input';
+import Button from './css/Button.css';
+import Forms from './css/Forms.css';
 
 class Calculator extends Component {
   constructor(props) {
@@ -37,11 +39,7 @@ class Calculator extends Component {
       expectedUpsideSum,
       expectedDownsideSum,
     })
-    if (expected_upside && upside_probability && expected_downside && downside_probability) {
-      console.log(`( ${expected_upside_value} * ${upside_probability_value} ) - ( ${expected_downside_value} * ${downside_probability_value} ) so your expected value is ${expectedValueSum}`);
-    } else {
-      console.log("I can't work with infinite probability, dummy")
-    }
+
   }
 
   handleChange(event) {
@@ -58,40 +56,48 @@ class Calculator extends Component {
     const { expectedValueSum, expectedUpsideSum, expectedDownsideSum } = this.state;
     return(
       <React.Fragment>
-      <form onSubmit={this.handleSubmit}>
-        <Input
-          label="Expected Upside in GBP"
-          type="number"
-          name="expected_upside"
-          value={this.state.expected_upside}
-          onChange={this.handleChange}
-        />
-        <Input
-          label="Upside Probability"
-          type="number"
-          name="upside_probability"
-          value={this.state.upside_probability}
-          onChange={this.handleChange}
-        />
-        <Input
-          label="Expected Downside in GBP"
-          type="number"
-          name="expected_downside"
-          value={this.state.expected_downside}
-          onChange={this.handleChange}
-        />
-        <Input
-          label="Downside Probability"
-          type="number"
-          name="downside_probability"
-          value={this.state.downside_probability}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Calculate expected value</button>
-      </form>
-      {expectedUpsideSum ? <p>Your expected <strong>upside</strong> value is £{expectedUpsideSum}</p> : null}
-      {expectedDownsideSum ? <p>Your expected <strong>downside</strong> value is £{expectedDownsideSum}</p> : null}
-      {expectedValueSum ? <p>Therefore your expected value is <strong>£{expectedValueSum}</strong></p> : null}
+      <div className="row">
+        <div className="col-6">
+          <form onSubmit={this.handleSubmit}>
+            <Input
+              label="Expected upside in £"
+              type="number"
+              name="expected_upside"
+              value={this.state.expected_upside}
+              onChange={this.handleChange}
+            />
+            <Input
+              label="Upside probability as a percentage"
+              type="number"
+              name="upside_probability"
+              value={this.state.upside_probability}
+              onChange={this.handleChange}
+            />
+            <Input
+              label="Expected downside in £"
+              type="number"
+              name="expected_downside"
+              value={this.state.expected_downside}
+              onChange={this.handleChange}
+            />
+            <Input
+              label="Downside probability as a percentage"
+              type="number"
+              name="downside_probability"
+              value={this.state.downside_probability}
+              onChange={this.handleChange}
+            />
+            <div className="col-12">
+              <button type="submit">Calculate expected value</button>
+            </div>
+        </form>
+        </div>
+        <div className="col-6">
+          {expectedUpsideSum ? <p>Your expected <strong>upside</strong> value is £{expectedUpsideSum}</p> : null}
+          {expectedDownsideSum ? <p>Your expected <strong>downside</strong> value is £{expectedDownsideSum}</p> : null}
+          {expectedValueSum ? <p>Therefore your expected value is <strong>£{expectedValueSum}</strong></p> : null}
+        </div>
+      </div>
       </React.Fragment>
     );
   }
