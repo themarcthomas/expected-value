@@ -48,8 +48,6 @@ class Calculator extends Component {
       })
     }
 
-
-
   }
 
   handleChange(event) {

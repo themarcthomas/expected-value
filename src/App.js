@@ -14,6 +14,11 @@ class App extends Component {
           </div>
         </div>
         <Calculator />
+        <div className="row">
+          <div className="col-12">
+            <small>Disclaimer: This is a calculator, not my advice. Use your own judgement. Take responsbility for your own choices.</small>
+          </div>
+        </div>
       </div>
     );
   }
